@@ -1,24 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import Login from './components/login/Login';
+import Register from './components/register/Register';
+import Profile from './components/profile/Profile';
+import { createContext, useEffect, useState } from 'react';
+import { AuthorizeUser } from './helper/middleware.js';
+
+export const EmailContext = createContext(null)
 
 function App() {
+
+  const [regEmail, setEmail] = useState("")
+
+  function emailAs (email) {
+    localStorage.setItem("regemail", email)
+    setEmail(email)
+  }
+
+  function emailCheck () {
+    const email = localStorage.getItem("regemail")
+    if(email !== undefined && email !== null ){
+      setEmail(email);
+    }else{
+      setEmail("")
+    }
+  }
+
+  useEffect(()=>{
+    emailCheck()
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <EmailContext.Provider value={{regEmail, emailAs}}>
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/profile'  element={<AuthorizeUser><Profile /></AuthorizeUser> }/>
+      </Routes>
+    </EmailContext.Provider>
+    </BrowserRouter>
   );
 }
 
