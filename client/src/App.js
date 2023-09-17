@@ -5,6 +5,7 @@ import Register from './components/register/Register';
 import Profile from './components/profile/Profile';
 import { createContext, useEffect, useState } from 'react';
 import { AuthorizeUser } from './helper/middleware.js';
+import ReactGA from 'react-ga';
 
 export const EmailContext = createContext(null)
 
@@ -29,6 +30,9 @@ function App() {
   useEffect(()=>{
     emailCheck()
   },[])
+
+  const TrackingID = 'G-TXDFDT0LHN';
+  ReactGA.initialize(TrackingID)
 
   return (
     <BrowserRouter>

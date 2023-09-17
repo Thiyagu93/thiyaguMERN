@@ -19,7 +19,7 @@ app.use("/api", routeReq)
 //mongoDB connection
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MongoDB,{
+    await mongoose.connect('mongodb+srv://thiyagutg02:vishva2003@data.pymhopu.mongodb.net/data?retryWrites=true&w=majority',{
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
