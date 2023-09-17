@@ -35,7 +35,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onsubmit = (data) => {
-    axios.post("http://localhost:8800/api/register", data).then((res) => {
+    axios.post("https://thiyagumern.onrender.com/api/register", data).then((res) => {
     toast.success("Registed successfully!");
     setTimeout(() => {
       navigate("/");

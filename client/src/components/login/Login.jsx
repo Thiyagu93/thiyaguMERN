@@ -25,7 +25,7 @@ const Login = () => {
   const navigate = useNavigate();
 
 const onsubmit = (data) => {
-  axios.post("http://localhost:8800/api/login", data).then((res) => {
+  axios.post("https://thiyagumern.onrender.com/api/login", data).then((res) => {
   if (res.status === 200 ) {
       if(res.data.password){
       emailAs(res.data.email);

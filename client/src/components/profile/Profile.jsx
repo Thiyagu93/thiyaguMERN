@@ -52,7 +52,7 @@ const Profile = () => {
 
   const onsubmit = (data) => {
     axios
-      .put(`http://localhost:8800/api/update/${userId}`, data)
+      .put(`https://thiyagumern.onrender.com/api/update/${userId}`, data)
       .then((res) => {
         toast.success("Profile successfully Updated!");
       });
@@ -60,7 +60,7 @@ const Profile = () => {
 
   useEffect(() => {
     if(regEmail === "" ) return;
-    axios.get(`http://localhost:8800/api/user/${regEmail}`).then((res) => {
+    axios.get(`https://thiyagumern.onrender.com/api/user/${regEmail}`).then((res) => {
 
       setUsername(res.data.username);
       setdataEmail(res.data.email);
