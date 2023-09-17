@@ -9,13 +9,11 @@ import ReactGA from 'react-ga';
 
 export const EmailContext = createContext(null)
 
+ReactGA.initialize('G-TXDFDT0LHN')
+
 function App() {
-
-  ReactGA.initialize('G-TXDFDT0LHN')
-  ReactGA.pageview(window.location.pathname + window.location.search);
-  console.log(window.location.pathname + window.location.search);
- 
-
+  // ReactGA.pageview(window.location.pathname + window.location.search);
+  // console.log(window.location.pathname + window.location.search);
   const [regEmail, setEmail] = useState("")
 
   function emailAs (email) {

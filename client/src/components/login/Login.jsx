@@ -32,14 +32,15 @@ const onsubmit = (data) => {
       emailAs(res.data.email);
       localStorage.setItem("token", res.data.token);
       toast.success("Login successful..!");
+      ReactGA.event({
+        category: res.data,
+        action: 'click',
+        label: 'sign in'
+      });
       setTimeout(() => {
         navigate("/profile");
       }, 2000);
-      ReactGA.event({
-        category: 'Button',
-        action: 'Click',
-        label: 'sign in'
-      });
+      
     } else {
       toast.error("Error login credential..!", res.data); 
     }
