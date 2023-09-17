@@ -9,6 +9,11 @@ ReactGA.send({
   hitType: "pageview", 
   page: window.location.pathname
 });
+ReactGA.event({
+  category: 'Login', 
+  action: 'Sign In', 
+  label: 'User Logged In' 
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
