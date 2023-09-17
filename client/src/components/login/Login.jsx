@@ -7,8 +7,7 @@ import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { EmailContext } from "../../App.js";
-import { useContext, useEffect } from "react";
-import ReactGA from 'react-ga';
+import { useContext } from "react";
 
 const Login = () => {
 
@@ -32,12 +31,6 @@ const onsubmit = (data) => {
       emailAs(res.data.email);
       localStorage.setItem("token", res.data.token);
       toast.success("Login successful..!");
-      ReactGA.event({
-        category: 'Login', 
-        action: 'Sign In', 
-        label: 'User Logged In' 
-      });
-      
       setTimeout(() => {
         navigate("/profile");
       }, 2000);
@@ -53,12 +46,6 @@ const onsubmit = (data) => {
     toast.error("User not found..!");
   });
 };
-
-useEffect(()=>{
-  ReactGA.pageview(window.location.pathname);
-},[])
-
-
 
   return (
     <div className="App">
