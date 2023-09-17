@@ -36,8 +36,10 @@ const onsubmit = (data) => {
         navigate("/profile");
       }, 2000);
       ReactGA.event({
-        action: 'test action',
-      })
+        category: 'Button',
+        action: 'Click',
+        label: 'sign in'
+      });
     } else {
       toast.error("Error login credential..!", res.data); 
     }

@@ -14,11 +14,7 @@ function App() {
   ReactGA.initialize('G-TXDFDT0LHN')
   ReactGA.pageview(window.location.pathname + window.location.search);
   console.log(window.location.pathname + window.location.search);
-  ReactGA.event({
-    category: 'Button',
-    action: 'Click',
-    label: 'sign in'
-  });
+ 
 
   const [regEmail, setEmail] = useState("")
 
