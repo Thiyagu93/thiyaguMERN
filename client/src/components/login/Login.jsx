@@ -33,10 +33,11 @@ const onsubmit = (data) => {
       localStorage.setItem("token", res.data.token);
       toast.success("Login successful..!");
       ReactGA.event({
-        category: res.data,
-        action: 'click',
-        label: 'sign in'
+        category: 'Login', 
+        action: 'Sign In', 
+        label: 'User Logged In' 
       });
+      
       setTimeout(() => {
         navigate("/profile");
       }, 2000);

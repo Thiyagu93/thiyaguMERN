@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import {BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Profile from './components/profile/Profile';
@@ -9,11 +9,18 @@ import ReactGA from 'react-ga';
 
 export const EmailContext = createContext(null)
 
-ReactGA.initialize('G-TXDFDT0LHN')
 
 function App() {
-  // ReactGA.pageview(window.location.pathname + window.location.search);
-  // console.log(window.location.pathname + window.location.search);
+  useEffect(() => {
+    ReactGA.initialize('G-TXDFDT0LHN'); 
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
+  const location = useLocation();
+  useEffect(() => {
+    ReactGA.pageview(location.pathname + location.search);
+  }, [location]);
+
   const [regEmail, setEmail] = useState("")
 
   function emailAs (email) {
