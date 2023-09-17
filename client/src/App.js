@@ -11,6 +11,15 @@ export const EmailContext = createContext(null)
 
 function App() {
 
+  ReactGA.initialize('G-TXDFDT0LHN')
+  ReactGA.pageview(window.location.pathname + window.location.search);
+  console.log(window.location.pathname + window.location.search);
+  ReactGA.event({
+    category: 'Button',
+    action: 'Click',
+    label: 'sign in'
+  });
+
   const [regEmail, setEmail] = useState("")
 
   function emailAs (email) {
@@ -31,8 +40,6 @@ function App() {
     emailCheck()
   },[])
 
-  const TrackingID = 'G-TXDFDT0LHN';
-  ReactGA.initialize(TrackingID)
 
   return (
     <BrowserRouter>
